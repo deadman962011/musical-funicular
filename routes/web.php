@@ -27,6 +27,14 @@ use App\Http\Controllers\FirebaseController;
 |
 */
 
+Route::get('firebase-messaging-sw', function () {
+    $file = public_path('firebase-messaging-sw.js');
+    return response()->file($file, [
+        'Content-Type' => 'application/javascript',
+        'Service-Worker-Allowed' => '/'
+    ]);
+});
+
 
 Route::post('/subscribeToTopic', [FirebaseController::class, 'subscribeToTopic']);
 Route::get('/', 'HomeController@index')->name('home');
