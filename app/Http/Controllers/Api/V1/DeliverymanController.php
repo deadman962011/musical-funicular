@@ -223,9 +223,12 @@ class DeliverymanController extends Controller
                 $query->whereIn('order_status', ['confirmed','processing','handover'])->orWhere('order_type','parcel');
             });
         }
-        if(isset($dm->vehicle_id )){
-            $orders = $orders->where('dm_vehicle_id',$dm->vehicle_id);
-        }
+        
+        // TODO: Re-Activate order bu vehicle
+        // if(isset($dm->vehicle_id )){
+        //     $orders = $orders->where('dm_vehicle_id',$dm->vehicle_id);
+        // }
+
         $orders = $orders->dmOrder()
         ->Notpos()
         ->NotDigitalOrder()
